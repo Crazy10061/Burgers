@@ -1,0 +1,17 @@
+{
+ "item.erstemod.burger": "Burger",
+ "item.erstemod.lettuce" : "lettuce",
+ "item.erstemod.lettuce_head" : "lettuce head",
+ "item.erstemod.tomato" : "tomato",
+ "item.erstemod.tomato_slice" : "tomato slice",
+ "item.erstemod.patty" : "Burger patty",
+ "item.erstemod.raw_patty" : "raw Burger patty",
+ "item.erstemod.bun" : "Burger bun",
+ "item.erstemod.bottom_bun" : "bottom bun",
+ "item.erstemod.top_bun" : "top bun",
+ "item.erstemod.lettuce_seed" : "lettuce seed",
+ "item.erstemod.tomato_seed" : "tomato seed",
+ "creativemodetab.erstemod.burgers": "Burgers",
+ "creativemodetab.erstemod.better_burger": "better Burgers",
+ "block.erstemod.cutting_board" : "cutting board"
+}

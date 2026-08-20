@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "Burgers",
+  "key": {
+    "A": "erstemod:top_bun",
+    "B": "erstemod:tomato_slice",
+    "C": "erstemod:patty",
+    "D": "erstemod:lettuce",
+    "E": "erstemod:bottom_bun"
+  },
+  "pattern": [
+    " A ",
+    "BCD",
+    " E "
+  ],
+  "result": {
+    "id": "erstemod:burger"
+  }
+}

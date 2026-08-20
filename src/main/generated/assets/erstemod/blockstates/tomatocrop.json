@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "erstemod:block/tomatocrop_stage0"
+    },
+    "age=1": {
+      "model": "erstemod:block/tomatocrop_stage1"
+    }
+  }
+}

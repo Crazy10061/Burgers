@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "erstemod:block/lettuce_head_crop_stage0"
+  }
+}
