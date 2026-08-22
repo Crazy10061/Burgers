@@ -1,15 +1,14 @@
 {
 	"schemaVersion": 1,
-	"id": "erstemod",
-	"version": "${version}",
-	"name": "erstemod",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"id": "burgers",
+	"version": "1",
+	"name": "Bugers",
+	"description": "Adds Burgers",
 	"authors": [
-		"Me!"
+		"Lordjayda"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/Lordjayda/Burgers"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/erstemod/icon.png",
@@ -17,6 +16,9 @@
 	"entrypoints": {
 		"main": [
 			"net.lordjayda.erstemod.Erstemod"
+		],
+		"client": [
+			"net.lordjayda.erstemod.ErstemodClient"
 		],
 		"fabric-datagen": [
 			"net.lordjayda.erstemod.ErstemodDataGenerator"

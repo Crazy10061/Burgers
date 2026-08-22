@@ -1,7 +1,8 @@
 package net.lordjayda.erstemod.block.custom;
 
 import com.mojang.serialization.MapCodec;
-import net.lordjayda.erstemod.item.Moditems;
+import net.lordjayda.erstemod.block.entity.custom.CuttingBoardBlockEntity;
+import net.lordjayda.erstemod.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -17,8 +18,9 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.HorizontalDirectionalBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -27,11 +29,14 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jspecify.annotations.Nullable;
 
 import java.util.Map;
 
 
-public class CuttingBoard extends HorizontalDirectionalBlock {
+public class CuttingBoard extends BaseEntityBlock {
+
+    private static final MapCodec<CuttingBoard> CODEC= simpleCodec(CuttingBoard::new);
 
     public static final Map<Direction, VoxelShape> SHAPES = Map.of(
             Direction.NORTH, Shapes.or(
@@ -100,8 +105,8 @@ public class CuttingBoard extends HorizontalDirectionalBlock {
     }
 
     @Override
-    protected MapCodec<? extends HorizontalDirectionalBlock> codec() {
-        return null;
+    protected MapCodec<? extends BaseEntityBlock> codec() {
+        return CODEC;
     }
 
     @Override
@@ -110,7 +115,7 @@ public class CuttingBoard extends HorizontalDirectionalBlock {
     }
 
     public BlockState getStateForPlacement(final BlockPlaceContext context) {
-        return (BlockState)this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
+        return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
     }
 
     @Override
@@ -127,26 +132,86 @@ public class CuttingBoard extends HorizontalDirectionalBlock {
         return SHAPES.get(state.getValue(FACING));
     }
 
-    @Override
+    /*@Override
     protected InteractionResult useItemOn(ItemStack itemStack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         ItemStack stack = player.getItemInHand(hand);
-        if (stack.is(Moditems.Tomate)){ itemStack.shrink(1);
-            player.addItem(new ItemStack(Moditems.tomaten_scheibe, 4));
+        if (stack.is(ModItems.TOMATO)){ itemStack.shrink(1);
+            player.addItem(new ItemStack(ModItems.TOMATO_SLICE, 4));
         }
-        if (stack.is(Moditems.lettucehead)){ itemStack.shrink(1);
-        player.addItem(new ItemStack(Moditems.lettuce, 4));
+        if (stack.is(ModItems.LETTUCEHEAD)){ itemStack.shrink(1);
+            player.addItem(new ItemStack(ModItems.LETTUCE, 4));
         }
-        if (stack.is(Moditems.Bun)){ itemStack.shrink(1);
-            player.addItem( new ItemStack(Moditems.top_Bun, 1));
-            player.addItem(new ItemStack(Moditems.bottom_Bun, 1));
+        if (stack.is(ModItems.BUN)){ itemStack.shrink(1);
+            player.addItem( new ItemStack(ModItems.TOP_BUN, 1));
+            player.addItem(new ItemStack(ModItems.BOTTOM_BUN, 1));
         }
         if (stack.is(Items.BEEF)) {
             itemStack.shrink(1);
-            player.addItem(new ItemStack(Moditems.raw_patty,1));
+            player.addItem(new ItemStack(ModItems.RAW_PATTY,1));
         }
         return InteractionResult.SUCCESS;
     }
+     */
 
+
+    @Override
+    protected InteractionResult useItemOn(ItemStack itemStack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        if (level.getBlockEntity(pos) instanceof CuttingBoardBlockEntity cuttingBoardBlockEntity) {
+            boolean isCuttingBoardempty = cuttingBoardBlockEntity.isEmpty();
+
+            //Insert
+            if (isCuttingBoardempty && !itemStack.isEmpty()) {
+                cuttingBoardBlockEntity.setTheItem(itemStack);
+                itemStack.shrink(1);
+                level.playSound(player, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1f, 2f);
+            }
+            //Extract
+            else if (!isCuttingBoardempty) {
+                ItemStack stackOnCuttingBoard = cuttingBoardBlockEntity.getTheItem();
+
+                if (player.isShiftKeyDown()) {
+                    ItemStack resultStack = ItemStack.EMPTY;
+
+                    if (stackOnCuttingBoard.is(ModItems.TOMATO)) {
+                        resultStack = new ItemStack(ModItems.TOMATO_SLICE, 4);
+                    } else if (stackOnCuttingBoard.is(ModItems.LETTUCEHEAD)) {
+                        resultStack = new ItemStack(ModItems.LETTUCE, 4);
+                    } else if (stackOnCuttingBoard.is(Items.BEEF)) {
+                        resultStack = new ItemStack(ModItems.RAW_PATTY);
+                    } else
+                    if (stackOnCuttingBoard.is(ModItems.BUN)) {
+                        cuttingBoardBlockEntity.clearContent();
+
+                        ItemStack bottomBun = new ItemStack(ModItems.BOTTOM_BUN);
+                        ItemStack topBun = new ItemStack(ModItems.TOP_BUN);
+
+                        if (!player.getInventory().add(bottomBun)) {
+                            player.drop(bottomBun, false);
+                        }
+
+                        if (!player.getInventory().add(topBun)) {
+                            player.drop(topBun, false);
+                        }
+                    }
+
+                    if (!resultStack.isEmpty()) {
+                        cuttingBoardBlockEntity.clearContent();
+
+                        if (!player.getInventory().add(resultStack)) {
+                            player.drop(resultStack, false);
+                        }
+                    }
+                } else {
+                    cuttingBoardBlockEntity.clearContent();
+
+                    if (!player.getInventory().add(stackOnCuttingBoard)) {
+                        player.drop(stackOnCuttingBoard, false);
+                    }
+                }
+            }
+        }
+        return InteractionResult.SUCCESS;
+    }
 
     @Override
     public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
@@ -164,5 +229,31 @@ public class CuttingBoard extends HorizontalDirectionalBlock {
 
 
 
+    }
+
+    @Override
+    public void playerDestroy(Level level, Player player,
+                              BlockPos pos, BlockState state,
+                              @Nullable BlockEntity blockEntity,
+                              ItemStack destroyedWith) {
+
+        if(level.getBlockEntity(pos) instanceof CuttingBoardBlockEntity cuttingBoardBlockEntity) {
+            cuttingBoardBlockEntity.drops();
+            level.updateNeighbourForOutputSignal(pos, this);
+        }
+
+        super.playerDestroy(
+                level,
+                player,
+                pos,
+                state,
+                blockEntity,
+                destroyedWith
+        );
+    }
+
+    @Override
+    public @Nullable BlockEntity newBlockEntity(BlockPos worldPosition, BlockState blockState) {
+        return new CuttingBoardBlockEntity(worldPosition, blockState);
     }
 }

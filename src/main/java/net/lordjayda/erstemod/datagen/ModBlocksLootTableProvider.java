@@ -3,8 +3,8 @@ package net.lordjayda.erstemod.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootSubProvider;
 import net.lordjayda.erstemod.block.ModBlocks;
-import net.lordjayda.erstemod.block.custom.lettuceCropBlock;
-import net.lordjayda.erstemod.item.Moditems;
+import net.lordjayda.erstemod.block.custom.LettuceCropBlock;
+import net.lordjayda.erstemod.item.ModItems;
 import net.minecraft.advancements.predicates.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
@@ -22,12 +22,12 @@ public class ModBlocksLootTableProvider extends FabricBlockLootSubProvider {
     @Override
     public void generate() {
         dropSelf(ModBlocks.CUTTING_BOARD);
-        this.add(lettuce_headcrop, this.createCropDrops(lettuce_headcrop, Moditems.lettucehead, Moditems.lettuce_seed,
+        this.add(lettuce_headcrop, this.createCropDrops(lettuce_headcrop, ModItems.LETTUCEHEAD, ModItems.LETTUCE_SEED,
                 LootItemBlockStatePropertyCondition.hasBlockStateProperties(lettuce_headcrop)
-                        .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(lettuceCropBlock.AGE, lettuceCropBlock.MAX_AGE))));
-        this.add(tomatocrop, this.createCropDrops(tomatocrop, Moditems.Tomate, Moditems.tomato_seed,
+                        .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(LettuceCropBlock.AGE, LettuceCropBlock.MAX_AGE))));
+        this.add(tomatocrop, this.createCropDrops(tomatocrop, ModItems.TOMATO, ModItems.TOMATO_SEED,
                 LootItemBlockStatePropertyCondition.hasBlockStateProperties(tomatocrop)
-                        .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(lettuceCropBlock.AGE, lettuceCropBlock.MAX_AGE))
+                        .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(LettuceCropBlock.AGE, LettuceCropBlock.MAX_AGE))
         ));
     }
 }

@@ -1,6 +1,6 @@
 package net.lordjayda.erstemod.block.custom;
 
-import net.lordjayda.erstemod.item.Moditems;
+import net.lordjayda.erstemod.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
@@ -11,9 +11,8 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.lwjgl.system.ffm.mapping.Mapping;
 
-public class tomatocropblock extends CropBlock {
+public class TomatoCropBlock extends CropBlock {
 
     public static final int MAX_AGE = 1;
     public static final IntegerProperty AGE = IntegerProperty.create( "age", 0, MAX_AGE);
@@ -22,13 +21,13 @@ public class tomatocropblock extends CropBlock {
             Block.box(6, 0, 5, 10, 15, 9)
     };
 
-    public tomatocropblock(Properties properties) {
+    public TomatoCropBlock(Properties properties) {
         super(properties);
     }
 
     @Override
     protected ItemLike getBaseSeedId() {
-        return Moditems.tomato_seed;
+        return ModItems.TOMATO_SEED;
     }
 
     @Override

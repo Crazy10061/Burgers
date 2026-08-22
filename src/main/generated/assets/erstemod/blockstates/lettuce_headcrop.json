@@ -4,7 +4,7 @@
       "model": "erstemod:block/lettuce_headcrop_stage0"
     },
     "age=1": {
-      "model": "erstemod:block/lettuce_headcrop_stage1"
+      "model": "erstemod:block/3dlettuce"
     }
   }
 }

@@ -2,7 +2,8 @@ package net.lordjayda.erstemod.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.lordjayda.erstemod.item.Moditems;
+import net.lordjayda.erstemod.block.ModBlocks;
+import net.lordjayda.erstemod.item.ModItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
@@ -24,26 +25,38 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         return new RecipeProvider(registries, output) {
             @Override
             public void buildRecipes() {
-                List<ItemLike> Smeltables = List.of(Moditems.raw_patty);
+                List<ItemLike> Smeltables = List.of(ModItems.RAW_PATTY);
 
-                oreSmelting(Smeltables, RecipeCategory.FOOD, CookingBookCategory.FOOD, Moditems.patty, 0.25f,100, "Burger Ingredients");
-                shaped(RecipeCategory.FOOD, Moditems.BURGER)
+                oreSmelting(Smeltables, RecipeCategory.FOOD, CookingBookCategory.FOOD, ModItems.PATTY, 0.25f,100, "Burger Ingredients");
+                shaped(RecipeCategory.FOOD, ModItems.BURGER)
                         .pattern(" A ")
                         .pattern("BCD")
                         .pattern(" E ")
-                        .define('A',Moditems.top_Bun)
-                        .define('B',Moditems.tomaten_scheibe)
-                        .define('C',Moditems.patty)
-                        .define('D',Moditems.lettuce)
-                        .define('E',Moditems.bottom_Bun)
-                        .unlockedBy(getHasName(Moditems.patty), has(Moditems.patty))
+                        .define('A', ModItems.TOP_BUN)
+                        .define('B', ModItems.TOMATO_SLICE)
+                        .define('C', ModItems.PATTY)
+                        .define('D', ModItems.LETTUCE)
+                        .define('E', ModItems.BOTTOM_BUN)
+                        .unlockedBy(getHasName(ModItems.PATTY), has(ModItems.PATTY))
                         .group("Burgers")
                         .save(output);
-                shaped(RecipeCategory.FOOD, Moditems.Bun)
+                shaped(RecipeCategory.FOOD, ModItems.BUN)
                         .pattern("RR")
                         .pattern("RR")
                         .define('R',Items.WHEAT)
                         .unlockedBy(getHasName(Items.WHEAT), has(Items.WHEAT))
+                        .group("Burgers")
+                        .save(output);
+
+                shaped(RecipeCategory.FOOD, ModBlocks.CUTTING_BOARD)
+                        .pattern("AB ")
+                        .pattern("CDE")
+                        .define('A', Items.STICK)
+                        .define('B', Items.FLINT)
+                        .define('C', Items.OAK_PLANKS)
+                        .define('D', Items.OAK_PLANKS)
+                        .define('E', Items.OAK_PLANKS)
+                        .unlockedBy(getHasName(Items.FLINT), has(Items.FLINT))
                         .group("Burgers")
                         .save(output);
 

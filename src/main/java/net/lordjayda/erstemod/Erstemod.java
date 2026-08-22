@@ -3,9 +3,9 @@ package net.lordjayda.erstemod;
 import net.fabricmc.api.ModInitializer;
 
 import net.lordjayda.erstemod.block.ModBlocks;
+import net.lordjayda.erstemod.block.entity.ModBlockEntities;
 import net.lordjayda.erstemod.creativemodetab.ModCreativeModeTabs;
-import net.lordjayda.erstemod.item.Moditems;
-import net.minecraft.resources.Identifier;
+import net.lordjayda.erstemod.item.ModItems;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +18,8 @@ public class Erstemod implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		ModCreativeModeTabs.registerModCreativeModeTabs();
-		Moditems.registerModItems();
+		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
+		ModBlockEntities.registerBlockEntities();
     }
 }

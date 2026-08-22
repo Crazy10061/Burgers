@@ -13,5 +13,15 @@
  "item.erstemod.tomato_seed" : "tomato seed",
  "creativemodetab.erstemod.burgers": "Burgers",
  "creativemodetab.erstemod.better_burger": "better Burgers",
- "block.erstemod.cutting_board" : "cutting board"
+ "block.erstemod.cutting_board" : "cutting board",
+ "advancement.erstemod.root.title": "Burgers",
+ "advancement.erstemod.root.description": "sneak and right click the cutting Board when a Ingredient is on it, to cut it",
+ "advancements.tutorialmod.plant_custom.title": "Planting ingredients",
+ "advancements.tutorialmod.plant_custom.description": "first seed planted",
+ "advancements.tutorialmod.harvestcutsomplant.title": "Ingredients harvested",
+ "advancements.tutorialmod.harvestcutsomplant.description": "harvest a burger ingredient",
+ "advancements.tutorialmod.cookmeat.title": "cooked Patty",
+ "advancements.tutorialmod.cookmeat.description": "cook a patty in a oven",
+ "advancements.tutorialmod.cutmeat.title": "make a patty",
+ "advancements.tutorialmod.cutmeat.description": "cut Beef on a cutting Board"
 }
