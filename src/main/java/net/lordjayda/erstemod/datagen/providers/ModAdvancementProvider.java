@@ -1,4 +1,4 @@
-package net.lordjayda.erstemod.datagen;
+package net.lordjayda.erstemod.datagen.providers;
 
 import net.lordjayda.erstemod.Erstemod;
 import net.lordjayda.erstemod.block.ModBlocks;

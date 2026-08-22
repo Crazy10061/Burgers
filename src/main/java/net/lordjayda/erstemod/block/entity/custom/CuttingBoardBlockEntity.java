@@ -10,14 +10,13 @@ import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.Containers;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.ticks.ContainerSingleItem;
+import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
 public class CuttingBoardBlockEntity extends BlockEntity implements ContainerSingleItem.BlockContainerSingleItem {
@@ -29,12 +28,12 @@ public class CuttingBoardBlockEntity extends BlockEntity implements ContainerSin
     }
 
     @Override
-    public BlockEntity getContainerBlockEntity() {
+    public @NonNull BlockEntity getContainerBlockEntity() {
         return this;
     }
 
     @Override
-    public ItemStack getTheItem() {
+    public @NonNull ItemStack getTheItem() {
         return inventory.getFirst();
     }
 
@@ -49,19 +48,21 @@ public class CuttingBoardBlockEntity extends BlockEntity implements ContainerSin
         inventory.set(0,ItemStack.EMPTY);
     }
     public void drops(){
-        Containers.dropContents(this.level, this.worldPosition, this.inventory);
+        if (this.level != null) {
+            Containers.dropContents(this.level, this.worldPosition, this.inventory);
+        }
     }
 
     //daten  sichern
 
     @Override
-    protected void saveAdditional(ValueOutput output) {
+    protected void saveAdditional(@NonNull ValueOutput output) {
         super.saveAdditional(output);
         ContainerHelper.saveAllItems(output, this.inventory);
     }
 
     @Override
-    protected void loadAdditional(ValueInput input) {
+    protected void loadAdditional(@NonNull ValueInput input) {
         super.loadAdditional(input);
         ContainerHelper.loadAllItems(input, this.inventory);
     }
@@ -72,13 +73,15 @@ public class CuttingBoardBlockEntity extends BlockEntity implements ContainerSin
     @Override
     public void setChanged() {
         super.setChanged();
-        if (!level.isClientSide()) {
-            level.sendBlockUpdated(worldPosition, this.getBlockState(), this.getBlockState(), 3);
+        if (level != null) {
+            if (!level.isClientSide()) {
+                level.sendBlockUpdated(worldPosition, this.getBlockState(), this.getBlockState(), 3);
+            }
         }
     }
 
     @Override
-    public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+    public @NonNull CompoundTag getUpdateTag(HolderLookup.@NonNull Provider registries) {
         return super.getUpdateTag(registries);
     }
 

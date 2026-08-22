@@ -1,4 +1,4 @@
-package net.lordjayda.erstemod.block.entity.renderer;
+package net.lordjayda.erstemod.client.renderer.state;
 
 import net.minecraft.client.renderer.blockentity.state.BlockEntityRenderState;
 import net.minecraft.client.renderer.item.ItemStackRenderState;

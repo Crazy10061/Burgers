@@ -16,4 +16,10 @@ public class ModFoods {
     public static final FoodProperties salad =  new FoodProperties.Builder().nutrition(3).saturationModifier(0.5f).build();
     //kopieren und nutrition und saturation anpassen und in moditems registrieren
 
+
+    // Misc helper methods
+    // You could use this to make the food creation easier.
+    public FoodProperties createFoodProperty(int nutrition, float saturation) {
+        return new FoodProperties.Builder().nutrition(nutrition).saturationModifier(saturation).build();
+    }
 }

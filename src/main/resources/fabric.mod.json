@@ -1,8 +1,8 @@
 {
 	"schemaVersion": 1,
-	"id": "burgers",
+	"id": "erstemod",
 	"version": "1",
-	"name": "Bugers",
+	"name": "Burgers",
 	"description": "Adds Burgers",
 	"authors": [
 		"Lordjayda"
@@ -10,7 +10,7 @@
 	"contact": {
 		"sources": "https://github.com/Lordjayda/Burgers"
 	},
-	"license": "CC0-1.0",
+	"license": "MIT",
 	"icon": "assets/erstemod/icon.png",
 	"environment": "*",
 	"entrypoints": {
@@ -18,10 +18,10 @@
 			"net.lordjayda.erstemod.Erstemod"
 		],
 		"client": [
-			"net.lordjayda.erstemod.ErstemodClient"
+          "net.lordjayda.erstemod.client.ErstemodClient"
 		],
 		"fabric-datagen": [
-			"net.lordjayda.erstemod.ErstemodDataGenerator"
+			"net.lordjayda.erstemod.datagen.ErstemodDataGenerator"
 		]
 	},
 	"mixins": [

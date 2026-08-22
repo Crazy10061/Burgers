@@ -1,4 +1,4 @@
-package net.lordjayda.erstemod.creativemodetab;
+package net.lordjayda.erstemod.item.creative;
 
 import net.fabricmc.fabric.api.creativetab.v1.FabricCreativeModeTab;
 import net.lordjayda.erstemod.Erstemod;

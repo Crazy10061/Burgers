@@ -1,9 +1,10 @@
-package net.lordjayda.erstemod.block.entity.renderer;
+package net.lordjayda.erstemod.client.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.lordjayda.erstemod.block.custom.CuttingBoard;
 import net.lordjayda.erstemod.block.entity.custom.CuttingBoardBlockEntity;
+import net.lordjayda.erstemod.client.renderer.state.CuttingBoardBlockEntityRendererState;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
@@ -15,6 +16,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
 public class CuttingBoardBlockEntityRenderer implements BlockEntityRenderer<CuttingBoardBlockEntity, CuttingBoardBlockEntityRendererState> {
@@ -25,7 +27,7 @@ public class CuttingBoardBlockEntityRenderer implements BlockEntityRenderer<Cutt
     }
 
     @Override
-    public CuttingBoardBlockEntityRendererState createRenderState() {
+    public @NonNull CuttingBoardBlockEntityRendererState createRenderState() {
         return new CuttingBoardBlockEntityRendererState();
     }
 

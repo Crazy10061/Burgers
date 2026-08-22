@@ -25,17 +25,14 @@ public class ModItems {
     public static final Item BUN = registerItem( "bun", Item::new );
     public static final Item TOP_BUN = registerItem( "top_bun", Item::new );
     public static final Item BOTTOM_BUN = registerItem( "bottom_bun", Item::new );
-//einfach kopieren und namen und id ändern
 
 
-
-
-    private static Item registerItem(String name, Function<Item.Properties, Item> function) {
-        return Registry.register(BuiltInRegistries.ITEM, Identifier.fromNamespaceAndPath(Erstemod.MOD_ID, name),
-                function.apply(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Erstemod.MOD_ID, name)))));
+    private static Item registerItem(String id, Function<Item.Properties, Item> function) {
+        return Registry.register(BuiltInRegistries.ITEM, Identifier.fromNamespaceAndPath(Erstemod.MOD_ID, id),
+                function.apply(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Erstemod.MOD_ID, id)))));
     }
 
-    public static void  registerModItems () {
+    public static void registerModItems () {
         Erstemod.LOGGER.info("Registering Mod Items for" + Erstemod.MOD_ID);
     }
 }
