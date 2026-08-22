@@ -1,0 +1,32 @@
+{
+  "parent": "erstemod:erstemod/root",
+  "criteria": {
+    "lettuce": {
+      "conditions": {
+        "items": [
+          {
+            "items": "erstemod:raw_patty"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.tutorialmod.cutmeat.description"
+    },
+    "icon": {
+      "id": "erstemod:raw_patty"
+    },
+    "title": {
+      "translate": "advancements.tutorialmod.cutmeat.title"
+    }
+  },
+  "requirements": [
+    [
+      "lettuce"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
