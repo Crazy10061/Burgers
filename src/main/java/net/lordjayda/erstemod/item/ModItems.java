@@ -27,16 +27,6 @@ public class ModItems {
     public static final Item BOTTOM_BUN = registerItem( "bottom_bun", Item::new );
 
 
-    // einfach kopieren und namen und id ändern
-
-    /**
-     *
-     * @param id String value, used to supply the item's id to the registry
-     * @param function A lambda function, supplies the item's properties.
-     * <br>
-     * <br>
-     * Registers a custom item and adds it to the game's registry.
-     */
     private static Item registerItem(String id, Function<Item.Properties, Item> function) {
         return Registry.register(BuiltInRegistries.ITEM, Identifier.fromNamespaceAndPath(Erstemod.MOD_ID, id),
                 function.apply(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Erstemod.MOD_ID, id)))));
