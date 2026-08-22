@@ -1,10 +1,10 @@
-package net.lordjayda.erstemod;
+package net.lordjayda.erstemod.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
-import net.lordjayda.erstemod.datagen.*;
-import net.lordjayda.erstemod.datagen.villigar.ModVillagarTrades;
-import net.lordjayda.erstemod.datagen.villigar.ModVillagerTradeTags;
+import net.lordjayda.erstemod.datagen.providers.*;
+import net.lordjayda.erstemod.datagen.villager.ModVillagerTrades;
+import net.lordjayda.erstemod.datagen.villager.ModVillagerTradeTags;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
 
@@ -23,6 +23,6 @@ public class ErstemodDataGenerator implements DataGeneratorEntrypoint {
 
 	@Override
 	public void buildRegistry(RegistrySetBuilder registryBuilder) {
-		registryBuilder.add(Registries.VILLAGER_TRADE, ModVillagarTrades::bootstrap);
+		registryBuilder.add(Registries.VILLAGER_TRADE, ModVillagerTrades::bootstrap);
 	}
 }

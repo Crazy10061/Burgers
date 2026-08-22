@@ -237,7 +237,7 @@ public class CuttingBoard extends BaseEntityBlock {
                               @Nullable BlockEntity blockEntity,
                               ItemStack destroyedWith) {
 
-        if(level.getBlockEntity(pos) instanceof CuttingBoardBlockEntity cuttingBoardBlockEntity) {
+        if (level.getBlockEntity(pos) instanceof CuttingBoardBlockEntity cuttingBoardBlockEntity) {
             cuttingBoardBlockEntity.drops();
             level.updateNeighbourForOutputSignal(pos, this);
         }

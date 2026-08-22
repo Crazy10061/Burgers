@@ -1,4 +1,4 @@
-package net.lordjayda.erstemod.datagen;
+package net.lordjayda.erstemod.datagen.providers;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
@@ -16,8 +16,8 @@ public class ModBlockTagsProvider extends FabricTagsProvider.BlockTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider registries) {
         tag(BlockTags.CROPS)
-                .add(ModBlocks.getRK(ModBlocks.lettuce_headcrop))
-                .add(ModBlocks.getRK(ModBlocks.tomatocrop));
+                .add(ModBlocks.getResourceKey(ModBlocks.lettuce_headcrop))
+                .add(ModBlocks.getResourceKey(ModBlocks.tomatocrop));
 
 
 

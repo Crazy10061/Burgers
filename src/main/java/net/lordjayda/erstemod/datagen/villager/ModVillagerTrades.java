@@ -1,4 +1,4 @@
-package net.lordjayda.erstemod.datagen.villigar;
+package net.lordjayda.erstemod.datagen.villager;
 
 
 import net.lordjayda.erstemod.Erstemod;
@@ -15,7 +15,7 @@ import net.minecraft.world.item.trading.VillagerTrade;
 import java.util.List;
 import java.util.Optional;
 
-public class ModVillagarTrades {
+public class ModVillagerTrades {
 
 
     public static final ResourceKey<VillagerTrade> FARMER_1_EMERALD_LETTUCE_SEED = createKey("farmer/1/emerald_lettuce_seed");
@@ -25,7 +25,7 @@ public class ModVillagarTrades {
     public static void bootstrap(BootstrapContext<VillagerTrade> context) {
         context.register(FARMER_1_EMERALD_LETTUCE_SEED, new VillagerTrade(new TradeCost(Items.EMERALD, 4), new ItemStackTemplate(ModItems.LETTUCE_SEED), 12,4,0.05f, Optional.empty(), List.of()));
         context.register(FARMER_1_EMERALD_TOMATO_SEED, new VillagerTrade(new TradeCost(Items.EMERALD, 4), new ItemStackTemplate(ModItems.TOMATO_SEED), 12,4,0.05f, Optional.empty(), List.of()));
-        }
+    }
 
     private static ResourceKey<VillagerTrade> createKey(String name) {
         return ResourceKey.create(Registries.VILLAGER_TRADE, Identifier.fromNamespaceAndPath(Erstemod.MOD_ID, name));

@@ -11,6 +11,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jspecify.annotations.NonNull;
 
 public class LettuceCropBlock extends CropBlock {
 
@@ -26,12 +27,12 @@ public class LettuceCropBlock extends CropBlock {
     }
 
     @Override
-    protected ItemLike getBaseSeedId() {
+    protected @NonNull ItemLike getBaseSeedId() {
         return ModItems.LETTUCE_SEED;
     }
 
     @Override
-    protected IntegerProperty getAgeProperty() {
+    protected @NonNull IntegerProperty getAgeProperty() {
         return AGE;
     }
 
@@ -46,7 +47,7 @@ public class LettuceCropBlock extends CropBlock {
     }
 
     @Override
-    protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+    protected @NonNull VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return SHAPES[state.getValue(AGE)];
     }
 

@@ -32,30 +32,30 @@ public class ModBlocks {
     public static final Block tomatocrop =registerBlock("tomatocrop",
             properties -> new TomatoCropBlock(properties.noCollision().randomTicks().instabreak().sound(SoundType.CROP)
                     .pushReaction(PushReaction.DESTROY)));
-// das kopieren für neuen block
+    // das kopieren für neuen block
 
-    private static Block registerBlock(String name, Function<BlockBehaviour.Properties, Block> function){
-        Block toRegister = function.apply(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Erstemod.MOD_ID, name))));
-        registerBlockItems(name, toRegister);
-        return Registry.register(BuiltInRegistries.BLOCK, Identifier.fromNamespaceAndPath(Erstemod.MOD_ID, name),toRegister);
+    private static Block registerBlock(String id, Function<BlockBehaviour.Properties, Block> function){
+        Block toRegister = function.apply(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Erstemod.MOD_ID, id))));
+        registerBlockItems(id, toRegister);
+        return Registry.register(BuiltInRegistries.BLOCK, Identifier.fromNamespaceAndPath(Erstemod.MOD_ID, id),toRegister);
     }
 
     //block mit blockitem registrierer
 
-    private static Block registerBlockwithoutBlockItem(String name, Function<BlockBehaviour.Properties, Block> function){
-        Block toRegister = function.apply(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Erstemod.MOD_ID, name))));
-        registerBlockItems(name, toRegister);
-        return Registry.register(BuiltInRegistries.BLOCK, Identifier.fromNamespaceAndPath(Erstemod.MOD_ID, name),toRegister);
+    private static Block registerBlockWithoutBlockItem(String id, Function<BlockBehaviour.Properties, Block> function){
+        Block toRegister = function.apply(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(Erstemod.MOD_ID, id))));
+        registerBlockItems(id, toRegister);
+        return Registry.register(BuiltInRegistries.BLOCK, Identifier.fromNamespaceAndPath(Erstemod.MOD_ID, id),toRegister);
     }
     //block ohne blockitem
 
-    private static void registerBlockItems(String name, Block block) {
-        Registry.register(BuiltInRegistries.ITEM, Identifier.fromNamespaceAndPath(Erstemod.MOD_ID, name),
+    private static void registerBlockItems(String id, Block block) {
+        Registry.register(BuiltInRegistries.ITEM, Identifier.fromNamespaceAndPath(Erstemod.MOD_ID, id),
                 new BlockItem(block, new Item.Properties().useBlockDescriptionPrefix()
-                        .setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Erstemod.MOD_ID, name)))));
+                        .setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(Erstemod.MOD_ID, id)))));
     }
 
-    public static ResourceKey<Block> getRK(Block block) {
+    public static ResourceKey<Block> getResourceKey(Block block) {
         return BuiltInRegistries.BLOCK.getResourceKey(block).get();
     }
 
