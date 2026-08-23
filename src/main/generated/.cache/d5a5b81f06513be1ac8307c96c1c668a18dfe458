@@ -1,0 +1,9 @@
+// 26.2	-999999999-01-01T00:00:00	Burgers/Erstemod Recipes
+1ffa2f190487952ae5f1a77af185e4392c6fc80b data/erstemod/advancement/recipes/food/bun.json
+e676783aca5e69eb6981fa1413dd917c2e10a234 data/erstemod/advancement/recipes/food/burger.json
+57a14d24b0e2002333b66ad9bd83c188965f8737 data/erstemod/advancement/recipes/food/cutting_board.json
+06afd1cf96640a7594e47aa70363cc8dbceb4368 data/erstemod/advancement/recipes/food/patty_from_smelting_raw_patty.json
+daa9e8b85ae557a8f06dcac48312ce254cef4a4a data/erstemod/recipe/bun.json
+e2e16500dc1e155d7940b1d87900c1414a00b836 data/erstemod/recipe/burger.json
+eeafe7f0f76154c184e2b9f9d221de9abb89b94d data/erstemod/recipe/cutting_board.json
+fc503a1cfe45a34f61f1c3f543f39c27f396dbf8 data/erstemod/recipe/patty_from_smelting_raw_patty.json
