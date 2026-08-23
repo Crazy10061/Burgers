@@ -1,7 +1,7 @@
 {
   "parent": "erstemod:erstemod/root",
   "criteria": {
-    "lettuce": {
+    "LETTUCE": {
       "conditions": {
         "items": [
           {
@@ -25,7 +25,7 @@
   },
   "requirements": [
     [
-      "lettuce"
+      "LETTUCE"
     ]
   ],
   "sends_telemetry_event": true

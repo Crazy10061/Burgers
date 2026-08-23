@@ -5,6 +5,7 @@ import net.fabricmc.api.ModInitializer;
 import net.lordjayda.erstemod.block.ModBlocks;
 import net.lordjayda.erstemod.block.entity.ModBlockEntities;
 import net.lordjayda.erstemod.creativemodetab.ModCreativeModeTabs;
+import net.lordjayda.erstemod.villager.ModVillagers;
 import net.lordjayda.erstemod.item.ModItems;
 
 import org.slf4j.Logger;
@@ -21,5 +22,6 @@ public class Erstemod implements ModInitializer {
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
 		ModBlockEntities.registerBlockEntities();
+		ModVillagers.register();
     }
 }

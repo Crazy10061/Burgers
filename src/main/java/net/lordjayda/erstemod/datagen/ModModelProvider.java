@@ -17,9 +17,9 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockModelGenerators blockModelGenerators) {
-        blockModelGenerators.createTrivialCube(ModBlocks.CUTTING_BOARD);
-        blockModelGenerators.createCropBlock(ModBlocks.lettuce_headcrop, LettuceCropBlock.AGE,0, 1);
-        blockModelGenerators.createCropBlock(ModBlocks.tomatocrop, TomatoCropBlock.AGE, 0,1 );
+        //blockModelGenerators.createTrivialCube(ModBlocks.CUTTING_BOARD);
+        //blockModelGenerators.createCropBlock(ModBlocks.lettuce_headcrop, LettuceCropBlock.AGE,0, 1);
+        //blockModelGenerators.createCropBlock(ModBlocks.tomatocrop, TomatoCropBlock.AGE, 0,1 );
 
     }
 

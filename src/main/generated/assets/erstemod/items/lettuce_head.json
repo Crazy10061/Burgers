@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "erstemod:block/3dlettuce"
+    "model": "erstemod:item/lettuce_head"
   }
 }

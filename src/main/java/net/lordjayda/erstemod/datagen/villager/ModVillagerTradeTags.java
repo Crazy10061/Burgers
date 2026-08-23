@@ -1,13 +1,11 @@
-package net.lordjayda.erstemod.datagen.villigar;
+package net.lordjayda.erstemod.datagen.villager;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagsProvider;
+import net.lordjayda.erstemod.tags.ModTags;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagEntry;
-import net.minecraft.tags.VillagerTradeTags;
 import net.minecraft.world.item.trading.VillagerTrade;
 
 import java.util.concurrent.CompletableFuture;
@@ -18,8 +16,8 @@ public class ModVillagerTradeTags extends FabricTagsProvider<VillagerTrade> {
     }
     @Override
     protected void addTags(HolderLookup.Provider registries) {
-        getOrCreateRawBuilder(VillagerTradeTags.FARMER_LEVEL_1)
-                .add(TagEntry.element(ModVillagarTrades.FARMER_1_EMERALD_LETTUCE_SEED.identifier()))
-                .add(TagEntry.element(ModVillagarTrades.FARMER_1_EMERALD_TOMATO_SEED.identifier()));
+        getOrCreateRawBuilder(ModTags.Trades.FAST_FOOD_WORKER_1)
+                .add(TagEntry.element(ModVillagerTrades.FAST_FOOD_WOKER_1_lettuce_seed.identifier()))
+                .add(TagEntry.element(ModVillagerTrades.FAST_FOOD_WOKER_1_tomato_seed.identifier()));
     }
 }
