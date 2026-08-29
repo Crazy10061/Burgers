@@ -24,5 +24,7 @@
  "advancements.tutorialmod.cookmeat.description": "cook a patty in a oven",
  "advancements.tutorialmod.cutmeat.title": "make a patty",
  "advancements.tutorialmod.cutmeat.description": "cut Beef on a cutting Board",
- "villager_profession.erstemod.fast_food_worker": "Fast-Food Worker"
+ "villager_profession.erstemod.fast_food_worker": "Fast-Food Worker",
+ "block.erstemod.assembler" : "Assembler",
+ "block.erstemod.assembler.menu" : "Assembler"
 }

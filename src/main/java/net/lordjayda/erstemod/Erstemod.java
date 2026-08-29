@@ -5,6 +5,7 @@ import net.fabricmc.api.ModInitializer;
 import net.lordjayda.erstemod.block.ModBlocks;
 import net.lordjayda.erstemod.block.entity.ModBlockEntities;
 import net.lordjayda.erstemod.creativemodetab.ModCreativeModeTabs;
+import net.lordjayda.erstemod.menu.ModMenuTypes;
 import net.lordjayda.erstemod.villager.ModVillagers;
 import net.lordjayda.erstemod.item.ModItems;
 
@@ -18,6 +19,7 @@ public class Erstemod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		ModMenuTypes.registerModMenuTypes();
 		ModCreativeModeTabs.registerModCreativeModeTabs();
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();

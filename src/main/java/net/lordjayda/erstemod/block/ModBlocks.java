@@ -1,6 +1,7 @@
 package net.lordjayda.erstemod.block;
 
 import net.lordjayda.erstemod.Erstemod;
+import net.lordjayda.erstemod.block.custom.Assembler;
 import net.lordjayda.erstemod.block.custom.LettuceCropBlock;
 import net.lordjayda.erstemod.block.custom.CuttingBoard;
 import net.lordjayda.erstemod.block.custom.TomatoCropBlock;
@@ -11,6 +12,8 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStackTemplate;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -24,6 +27,10 @@ public class ModBlocks {
 
     public static final Block CUTTING_BOARD =registerBlock("cutting_board",
             properties -> new CuttingBoard(properties.strength(0.2f)
+                    .sound(SoundType.BAMBOO_WOOD)));
+
+    public static final Block ASSEMBLER =registerBlock("assembler",
+            properties -> new Assembler(properties.strength(0.2f)
                     .sound(SoundType.BAMBOO_WOOD)));
 
     public static final Block lettuce_headcrop =registerBlock("lettuce_headcrop",

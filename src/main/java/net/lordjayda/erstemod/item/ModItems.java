@@ -10,6 +10,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+
 import java.util.function.Function;
 
 public class ModItems {
@@ -26,6 +27,11 @@ public class ModItems {
     public static final Item TOP_BUN = registerItem( "top_bun", Item::new );
     public static final Item BOTTOM_BUN = registerItem( "bottom_bun", Item::new );
 //einfach kopieren und namen und id ändern
+
+
+    public static ResourceKey<Item> getRK(Item item ) {
+        return BuiltInRegistries.ITEM.getResourceKey(item).get();
+    }
 
 
 

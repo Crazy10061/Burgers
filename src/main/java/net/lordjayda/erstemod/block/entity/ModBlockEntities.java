@@ -18,4 +18,8 @@ public class ModBlockEntities {
     public static final BlockEntityType<CuttingBoardBlockEntity> cuttingboard_be=
             Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, Identifier.fromNamespaceAndPath(Erstemod.MOD_ID, "cuttingboard_be"),
                     FabricBlockEntityTypeBuilder.create(CuttingBoardBlockEntity::new, ModBlocks.CUTTING_BOARD) .build());
+    public static final BlockEntityType<CuttingBoardBlockEntity> assembler_be=
+            Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, Identifier.fromNamespaceAndPath(Erstemod.MOD_ID, "assembler_be"),
+                    FabricBlockEntityTypeBuilder.create(CuttingBoardBlockEntity::new, ModBlocks.ASSEMBLER) .build());
+
 }

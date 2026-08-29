@@ -40,61 +40,45 @@ public class CuttingBoard extends BaseEntityBlock {
 
     public static final Map<Direction, VoxelShape> SHAPES = Map.of(
             Direction.NORTH, Shapes.or(
-                    Block.box(1, 0, 1, 16, 2, 10),
+                    Block.box(0, 0, 3, 16, 2, 13),
 
-                    Block.box(11, 5, 6, 15, 6, 7),
-                    Block.box(11, 3, 5, 15, 5, 6),
-                    Block.box(11, 2, 6, 15, 3, 7),
-                    Block.box(11, 3, 6, 15, 5, 7),
-                    Block.box(11, 3, 7, 15, 5, 8),
+                    Block.box(11, 0.9, 9, 15, 2.9, 11),
 
-                    Block.box(5, 4, 6, 11, 4.25, 7),
-                    Block.box(4, 4, 7, 11, 4.25, 8),
-                    Block.box(6, 4, 5, 11, 4.25, 6)
+                    Block.box(4, 2.5, 10, 11, 2.6, 11),
+                    Block.box(5, 2.5, 9, 11, 2.6, 10),
+                    Block.box(6, 2.5, 8, 11, 2.6, 9)
             ),
 
             Direction.SOUTH, Shapes.or(
-                    Block.box(0, 0, 6, 15, 2, 15),
+                    Block.box(0, 0, 3, 16, 2, 13),
 
-                    Block.box(1, 5, 9, 5, 6, 10),
-                    Block.box(1, 3, 10, 5, 5, 11),
-                    Block.box(1, 2, 9, 5, 3, 10),
-                    Block.box(1, 3, 9, 5, 5, 10),
-                    Block.box(1, 3, 8, 5, 5, 9),
+                    Block.box(1, 0.9, 5, 5, 2.9, 7),
 
-                    Block.box(5, 4, 9, 11, 4.25, 10),
-                    Block.box(5, 4, 8, 12, 4.25, 9),
-                    Block.box(5, 4, 10, 10, 4.25, 11)
+                    Block.box(5, 2.5, 5, 12, 2.6, 6),
+                    Block.box(5, 2.5, 6, 11, 2.6, 7),
+                    Block.box(5, 2.5, 7, 10, 2.6, 8)
             ),
-
-
             Direction.EAST, Shapes.or(
-                    Block.box(6, 0, 1, 15, 2, 16),
+                    Block.box(3, 0, 0, 13, 2, 16),
 
-                    Block.box(9, 5, 11, 10, 6, 15),
-                    Block.box(10, 3, 11, 11, 5, 15),
-                    Block.box(9, 2, 11, 10, 3, 15),
-                    Block.box(9, 3, 11, 10, 5, 15),
-                    Block.box(8, 3, 11, 9, 5, 15),
+                    Block.box(5, 0.9, 11, 7, 2.9, 15),
 
-                    Block.box(9, 4, 5, 10, 4.25, 11),
-                    Block.box(8, 4, 4, 9, 4.25, 11),
-                    Block.box(10, 4, 6, 11, 4.25, 11)
+                    Block.box(5, 2.5, 4, 6, 2.6, 11),
+                    Block.box(6, 2.5, 5, 7, 2.6, 11),
+                    Block.box(7, 2.5, 6, 8, 2.6, 11)
             ),
+
 
             Direction.WEST, Shapes.or(
-                    Block.box(1, 0, 0, 10, 2, 15),
+                    Block.box(3, 0, 0, 13, 2, 16),
 
-                    Block.box(6, 5, 1, 7, 6, 5),
-                    Block.box(5, 3, 1, 6, 5, 5),
-                    Block.box(6, 2, 1, 7, 3, 5),
-                    Block.box(6, 3, 1, 7, 5, 5),
-                    Block.box(7, 3, 1, 8, 5, 5),
+                    Block.box(9, 0.9, 1, 11, 2.9, 5),
 
-                    Block.box(6, 4, 5, 7, 4.25, 11),
-                    Block.box(7, 4, 5, 8, 4.25, 12),
-                    Block.box(5, 4, 5, 6, 4.25, 10)
+                    Block.box(10, 2.5, 5, 11, 2.6, 12),
+                    Block.box(9, 2.5, 5, 10, 2.6, 11),
+                    Block.box(8, 2.5, 5, 9, 2.6, 10)
             )
+
     );
     public static final EnumProperty<Direction> FACING = BlockStateProperties.HORIZONTAL_FACING;
 

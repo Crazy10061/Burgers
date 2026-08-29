@@ -30,6 +30,7 @@ public class ModCreativeModeTabs {
                                 output.accept(ModItems.PATTY);
                                 output.accept(ModItems.RAW_PATTY);
                                 output.accept(ModBlocks.CUTTING_BOARD);
+                                output.accept(ModBlocks.ASSEMBLER);
                             }).build());
 //hier neuen output für etwas im creative tab
     public static void registerModCreativeModeTabs(){

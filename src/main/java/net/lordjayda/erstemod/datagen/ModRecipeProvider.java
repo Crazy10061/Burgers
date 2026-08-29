@@ -60,6 +60,18 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .group("Burgers")
                         .save(output);
 
+                shaped(RecipeCategory.FOOD, ModBlocks.ASSEMBLER)
+                        .pattern(" B ")
+                        .pattern("CDE")
+                        .define('B', Items.IRON_BARS)
+                        .define('C', Items.OAK_PLANKS)
+                        .define('D', Items.OAK_PLANKS)
+                        .define('E', Items.OAK_PLANKS)
+                        .unlockedBy(getHasName(ModItems.BOTTOM_BUN), has(ModItems.BOTTOM_BUN))
+                        .unlockedBy(getHasName(ModItems.TOP_BUN), has(ModItems.TOP_BUN))
+                        .group("Burgers")
+                        .save(output);
+
             }
         };
     }

@@ -58,7 +58,7 @@ public class ModAdvancementProvider extends AdvancementProvider {
                     )
                     .requirements(AdvancementRequirements.Strategy.OR)
                     .addCriterion("LETTUCE", ItemUsedOnLocationTrigger.TriggerInstance.placedBlock(ModBlocks.lettuce_headcrop))
-                    .addCriterion("tomato", ItemUsedOnLocationTrigger.TriggerInstance.placedBlock(ModBlocks.tomatocrop))
+                    .addCriterion("lettuce", ItemUsedOnLocationTrigger.TriggerInstance.placedBlock(ModBlocks.tomatocrop))
                     .save(output, Erstemod.MOD_ID + ":erstemod/plant_custom");
 
             AdvancementHolder harvestcutsomplant = Advancement.Builder.advancement()
