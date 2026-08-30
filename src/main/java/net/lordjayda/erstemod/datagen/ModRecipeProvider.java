@@ -25,7 +25,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         return new RecipeProvider(registries, output) {
             @Override
             public void buildRecipes() {
-                List<ItemLike> Smeltables = List.of(ModItems.RAW_PATTY);
+                /*List<ItemLike> Smeltables = List.of(ModItems.RAW_PATTY);
 
                 oreSmelting(Smeltables, RecipeCategory.FOOD, CookingBookCategory.FOOD, ModItems.PATTY, 0.25f,100, "Burger Ingredients");
                 shaped(RecipeCategory.FOOD, ModItems.BURGER)
@@ -70,7 +70,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         .unlockedBy(getHasName(ModItems.BOTTOM_BUN), has(ModItems.BOTTOM_BUN))
                         .unlockedBy(getHasName(ModItems.TOP_BUN), has(ModItems.TOP_BUN))
                         .group("Burgers")
-                        .save(output);
+                        .save(output); */
 
             }
         };

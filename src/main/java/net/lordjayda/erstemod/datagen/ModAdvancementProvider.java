@@ -34,7 +34,7 @@ public class ModAdvancementProvider extends AdvancementProvider {
             var items = registries.lookupOrThrow(Registries.ITEM);
             var blocks = registries.lookupOrThrow(Registries.BLOCK);
 
-            AdvancementHolder root = Advancement.Builder.advancement().display(
+           /* AdvancementHolder root = Advancement.Builder.advancement().display(
                     ModBlocks.CUTTING_BOARD,
                     Component.translatable( "advancement.erstemod.root.title"),
                     Component.translatable( "advancement.erstemod.root.description"),
@@ -110,6 +110,7 @@ public class ModAdvancementProvider extends AdvancementProvider {
                     .requirements(AdvancementRequirements.Strategy.OR)
                     .addCriterion("LETTUCE", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.PATTY))
                     .save(output, Erstemod.MOD_ID + ":erstemod/cookmeat");
+            */
 
         }
     }

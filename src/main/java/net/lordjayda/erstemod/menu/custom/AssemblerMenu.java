@@ -132,6 +132,13 @@ public class AssemblerMenu extends AbstractContainerMenu {
                 return stack.is(ModTags.Items.TOP_BUN);
             }
         });
+        // Result Slot
+        addSlot(new Slot(inventory, 9, 80, 115) {
+            @Override
+            public boolean mayPlace(ItemStack stack) {
+                return false;
+            }
+        });
     }
 
 
@@ -151,7 +158,7 @@ public class AssemblerMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
     // THIS YOU HAVE TO DEFINE!
-    private static final int TE_INVENTORY_SLOT_COUNT = 9;  // must be the number of slots you have!
+    private static final int TE_INVENTORY_SLOT_COUNT = 10;  // must be the number of slots you have!
     @Override
     public ItemStack quickMoveStack(Player playerIn, int pIndex) {
         Slot sourceSlot = slots.get(pIndex);
@@ -161,11 +168,10 @@ public class AssemblerMenu extends AbstractContainerMenu {
 
         // Check if the slot clicked is one of the vanilla container slots
         if (pIndex < VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT) {
-            // This is a vanilla container slot so merge the stack into the tile inventory
-            if (!moveItemStackTo(sourceStack, TE_INVENTORY_FIRST_SLOT_INDEX, TE_INVENTORY_FIRST_SLOT_INDEX
-                    + TE_INVENTORY_SLOT_COUNT, false)) {
-                return ItemStack.EMPTY;  // EMPTY_ITEM
+            if (!moveSingleItemToAssembler(sourceStack)) {
+                return ItemStack.EMPTY;
             }
+         return ItemStack.EMPTY;  // EMPTY_ITEM
         } else if (pIndex < TE_INVENTORY_FIRST_SLOT_INDEX + TE_INVENTORY_SLOT_COUNT) {
             // This is a TE slot so merge the stack into the players inventory
             if (!moveItemStackTo(sourceStack, VANILLA_FIRST_SLOT_INDEX, VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT, false)) {
@@ -203,4 +209,32 @@ public class AssemblerMenu extends AbstractContainerMenu {
             this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142));
         }
     }
+
+    private boolean moveSingleItemToAssembler(ItemStack stack) {
+        System.out.println("Move: " + stack);
+
+        for(int i = TE_INVENTORY_FIRST_SLOT_INDEX;
+            i < TE_INVENTORY_FIRST_SLOT_INDEX + TE_INVENTORY_SLOT_COUNT;
+            i++) {
+
+            System.out.println("Check Slot: " + i);
+
+            Slot slot = slots.get(i);
+
+            if(slot.mayPlace(stack) && !slot.hasItem()) {
+                System.out.println("Found slot");
+
+                ItemStack copy = stack.copy();
+                copy.setCount(1);
+
+                slot.set(copy);
+                stack.shrink(1);
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 }

@@ -21,7 +21,7 @@ public class ModBlocksLootTableProvider extends FabricBlockLootSubProvider {
 
     @Override
     public void generate() {
-        dropSelf(ModBlocks.CUTTING_BOARD);
+       /* dropSelf(ModBlocks.CUTTING_BOARD);
         dropSelf(ModBlocks.ASSEMBLER);
         this.add(lettuce_headcrop, this.createCropDrops(lettuce_headcrop, ModItems.LETTUCEHEAD, ModItems.LETTUCE_SEED,
                 LootItemBlockStatePropertyCondition.hasBlockStateProperties(lettuce_headcrop)
@@ -30,5 +30,7 @@ public class ModBlocksLootTableProvider extends FabricBlockLootSubProvider {
                 LootItemBlockStatePropertyCondition.hasBlockStateProperties(tomatocrop)
                         .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(LettuceCropBlock.AGE, LettuceCropBlock.MAX_AGE))
         ));
+
+        */
     }
 }

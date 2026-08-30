@@ -16,7 +16,7 @@ public class ModItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.@NonNull Provider registries) {
-        tag(ModTags.Items.ASSEMBLER_INGREDIENTS)
+       /* tag(ModTags.Items.ASSEMBLER_INGREDIENTS)
                 .add(ModItems.getRK(ModItems.LETTUCE))
                 .add(ModItems.getRK(ModItems.PATTY))
                 .add(ModItems.getRK(ModItems.TOMATO_SLICE));
@@ -25,6 +25,7 @@ public class ModItemTagsProvider extends FabricTagsProvider.ItemTagsProvider {
         tag(ModTags.Items.BOTTOM_BUN)
                 .add(ModItems.getRK(ModItems.BOTTOM_BUN));
         tag(ModTags.Items.SAUCES);
+        */
     }
 
 }
