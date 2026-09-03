@@ -157,26 +157,29 @@ public class CuttingBoard extends BaseEntityBlock {
                 if (player.isShiftKeyDown()) {
                     ItemStack resultStack = ItemStack.EMPTY;
 
-
-                    for (CuttableItem item : ModItems.CUTTABLE_ITEMS) {
+                    boolean success = false;
+                    for (CuttableItem item : ModItems.getCuttableItems()) {
                         if ( stackOnCuttingBoard.is(item.input)) {
                             if (item.type == 0) {
                                 resultStack = item.output;
                                 if (!player.getInventory().add(resultStack)) {
                                     player.drop(resultStack, false);
                                 }
+                                success = true;
                             } else if (item.type == 1) {
                                 for (ItemStack stack : item.outputM) {
                                     if (!player.getInventory().add(stack)) {
                                         player.drop(stack, false);
                                     }
                                 }
+                                success = true;
                             }
                         }
                     }
-                    if (!resultStack.isEmpty()) {
+                    if (success) {
                         cuttingBoardBlockEntity.clearContent();
                     }
+
 
                 } else {
                     cuttingBoardBlockEntity.clearContent();
