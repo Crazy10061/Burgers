@@ -2,6 +2,7 @@ package net.lordjayda.erstemod.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import net.lordjayda.erstemod.block.entity.custom.CuttingBoardBlockEntity;
+import net.lordjayda.erstemod.item.CuttableItem;
 import net.lordjayda.erstemod.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -156,35 +157,27 @@ public class CuttingBoard extends BaseEntityBlock {
                 if (player.isShiftKeyDown()) {
                     ItemStack resultStack = ItemStack.EMPTY;
 
-                    if (stackOnCuttingBoard.is(ModItems.TOMATO)) {
-                        resultStack = new ItemStack(ModItems.TOMATO_SLICE, 4);
-                    } else if (stackOnCuttingBoard.is(ModItems.LETTUCEHEAD)) {
-                        resultStack = new ItemStack(ModItems.LETTUCE, 4);
-                    } else if (stackOnCuttingBoard.is(Items.BEEF)) {
-                        resultStack = new ItemStack(ModItems.RAW_PATTY);
-                    } else
-                    if (stackOnCuttingBoard.is(ModItems.BUN)) {
-                        cuttingBoardBlockEntity.clearContent();
 
-                        ItemStack bottomBun = new ItemStack(ModItems.BOTTOM_BUN);
-                        ItemStack topBun = new ItemStack(ModItems.TOP_BUN);
-
-                        if (!player.getInventory().add(bottomBun)) {
-                            player.drop(bottomBun, false);
-                        }
-
-                        if (!player.getInventory().add(topBun)) {
-                            player.drop(topBun, false);
+                    for (CuttableItem item : ModItems.CUTTABLE_ITEMS) {
+                        if ( stackOnCuttingBoard.is(item.input)) {
+                            if (item.type == 0) {
+                                resultStack = item.output;
+                                if (!player.getInventory().add(resultStack)) {
+                                    player.drop(resultStack, false);
+                                }
+                            } else if (item.type == 1) {
+                                for (ItemStack stack : item.outputM) {
+                                    if (!player.getInventory().add(stack)) {
+                                        player.drop(stack, false);
+                                    }
+                                }
+                            }
                         }
                     }
-
                     if (!resultStack.isEmpty()) {
                         cuttingBoardBlockEntity.clearContent();
-
-                        if (!player.getInventory().add(resultStack)) {
-                            player.drop(resultStack, false);
-                        }
                     }
+
                 } else {
                     cuttingBoardBlockEntity.clearContent();
 
