@@ -15,6 +15,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
 public class CuttingBoardBlockEntityRenderer implements BlockEntityRenderer<CuttingBoardBlockEntity, CuttingBoardBlockEntityRendererState> {
@@ -67,15 +68,15 @@ public class CuttingBoardBlockEntityRenderer implements BlockEntityRenderer<Cutt
     public void submit(
             CuttingBoardBlockEntityRendererState state,
             PoseStack poseStack,
-            SubmitNodeCollector submitNodeCollector,
-            CameraRenderState camera
+            @NonNull SubmitNodeCollector submitNodeCollector,
+            @NonNull CameraRenderState camera
     ) {
         poseStack.pushPose();
 
-        poseStack.translate(0.5f, 0.0f, 0.5f);
+        poseStack.translate(1f, 0.0f, 1f);
         poseStack.mulPose(Axis.YP.rotationDegrees(getRotationDegrees(state.facing)));
-        poseStack.translate(-0.3f, 0.25f, -0.3f);
-        poseStack.scale(0.55f, 0.55f, 0.55f);
+        poseStack.translate(-0.25f, 0.25f, -0.25f);
+        poseStack.scale(0.4f, 0.4f, 0.4f);
 
         state.itemStackRenderState.submit(
                 poseStack,

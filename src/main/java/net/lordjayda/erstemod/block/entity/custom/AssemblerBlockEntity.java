@@ -26,7 +26,8 @@ import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
 public class AssemblerBlockEntity extends BlockEntity implements Container, ExtendedMenuProvider<BlockPos> {
-    public NonNullList<ItemStack> inventory = NonNullList.withSize(9, ItemStack.EMPTY);
+    public NonNullList<ItemStack> inventory = NonNullList.withSize(10, ItemStack.EMPTY);
+
 
     public AssemblerBlockEntity(BlockPos worldPosition, BlockState blockState) {
         super(net.lordjayda.erstemod.block.entity.ModBlockEntities.assembler_be, worldPosition, blockState);
