@@ -14,11 +14,13 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class LettuceCropBlock extends CropBlock {
 
-    public static final int MAX_AGE = 1;
+    public static final int MAX_AGE = 3;
     public static final IntegerProperty AGE = IntegerProperty.create( "age", 0, MAX_AGE);
     private static final VoxelShape[] SHAPES = {
-            Block.box(4, 0, 4, 12, 4, 12),
-            Block.box(1, 0, 1, 15, 11, 15)
+            Block.box(6, 0, 6, 10, 4, 10),
+            Block.box(5, 0, 5, 11, 5, 11),
+            Block.box(4, 0, 4, 12, 10, 12),
+            Block.box(3,0,3,13,16,13)
     };
 
     public LettuceCropBlock(Properties properties) {
