@@ -1,12 +1,16 @@
 package net.lordjayda.erstemod.menu.custom;
 
+import net.lordjayda.erstemod.Erstemod;
 import net.lordjayda.erstemod.menu.ModMenuTypes;
 import net.lordjayda.erstemod.tags.ModTags;
+import net.minecraft.client.renderer.entity.state.EndermanRenderState;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -26,7 +30,7 @@ public class AssemblerMenu extends AbstractContainerMenu {
         addPlayerHotbar(inv);
 
         //bottom bun
-        addSlot(new Slot(inventory, 0, 80, 64) {
+        addSlot(new Slot(inventory, 0, 73, 65) {
             @Override
             public int getMaxStackSize() {
                 return 1;
@@ -35,10 +39,28 @@ public class AssemblerMenu extends AbstractContainerMenu {
             public boolean mayPlace(ItemStack stack) {
                 return stack.is(ModTags.Items.BOTTOM_BUN);
             }
+            public Identifier getNoItemIcon() {
+                return Identifier.fromNamespaceAndPath(Erstemod.MOD_ID,"container/slot/bun_bottom");
+            }
+        });
+
+        //top bun
+        addSlot(new Slot(inventory, 8, 73, 13) {
+            @Override
+            public int getMaxStackSize() {
+                return 1;
+            }
+            @Override
+            public boolean mayPlace(ItemStack stack) {
+                return stack.is(ModTags.Items.TOP_BUN);
+            }
+            public Identifier getNoItemIcon() {
+                return Identifier.fromNamespaceAndPath(Erstemod.MOD_ID,"container/slot/bun_top");
+            }
         });
 
         //Ingredient Slot 1
-        addSlot(new Slot(inventory, 1, 8, 34) {
+        addSlot(new Slot(inventory, 1, 16, 39) {
             @Override
             public int getMaxStackSize() {
                 return 1;
@@ -47,10 +69,13 @@ public class AssemblerMenu extends AbstractContainerMenu {
             public boolean mayPlace(ItemStack stack) {
             return stack.is(ModTags.Items.ASSEMBLER_INGREDIENTS);
             }
+            public Identifier getNoItemIcon() {
+                return Identifier.fromNamespaceAndPath(Erstemod.MOD_ID,"container/slot/ingredient");
+            }
         });
 
         //Ingredient Slot 2
-        addSlot(new Slot(inventory, 2, 44, 34) {
+        addSlot(new Slot(inventory, 2, 35, 39) {
             @Override
             public int getMaxStackSize() {
                 return 1;
@@ -59,11 +84,13 @@ public class AssemblerMenu extends AbstractContainerMenu {
             public boolean mayPlace(ItemStack stack) {
                 return stack.is(ModTags.Items.ASSEMBLER_INGREDIENTS);
             }
-
+            public Identifier getNoItemIcon() {
+                return Identifier.fromNamespaceAndPath(Erstemod.MOD_ID,"container/slot/ingredient");
+            }
         });
 
         //Ingredient Slot 3
-        addSlot(new Slot(inventory, 3, 80, 34) {
+        addSlot(new Slot(inventory, 3, 54, 39) {
             @Override
             public int getMaxStackSize() {
                 return 1;
@@ -71,11 +98,14 @@ public class AssemblerMenu extends AbstractContainerMenu {
             @Override
             public boolean mayPlace(ItemStack stack) {
                 return stack.is(ModTags.Items.ASSEMBLER_INGREDIENTS);
+            }
+            public Identifier getNoItemIcon() {
+                return Identifier.fromNamespaceAndPath(Erstemod.MOD_ID,"container/slot/ingredient");
             }
         });
 
         //Ingredient Slot 4
-        addSlot(new Slot(inventory, 4, 116, 34) {
+        addSlot(new Slot(inventory, 4, 73, 39) {
             @Override
             public int getMaxStackSize() {
                 return 1;
@@ -83,11 +113,14 @@ public class AssemblerMenu extends AbstractContainerMenu {
             @Override
             public boolean mayPlace(ItemStack stack) {
                 return stack.is(ModTags.Items.ASSEMBLER_INGREDIENTS);
+            }
+            public Identifier getNoItemIcon() {
+                return Identifier.fromNamespaceAndPath(Erstemod.MOD_ID,"container/slot/ingredient");
             }
         });
 
         //Ingredient Slot 5
-        addSlot(new Slot(inventory, 5, 152, 34) {
+        addSlot(new Slot(inventory, 5, 92, 39) {
             @Override
             public int getMaxStackSize() {
                 return 1;
@@ -96,10 +129,13 @@ public class AssemblerMenu extends AbstractContainerMenu {
             public boolean mayPlace(ItemStack stack) {
                 return stack.is(ModTags.Items.ASSEMBLER_INGREDIENTS);
             }
+            public Identifier getNoItemIcon() {
+                return Identifier.fromNamespaceAndPath(Erstemod.MOD_ID,"container/slot/ingredient");
+            }
         });
 
         //sauce 1
-        addSlot(new Slot(inventory, 6, 116, 5) {
+        addSlot(new Slot(inventory, 6, 92, 13) {
             @Override
             public int getMaxStackSize() {
                 return 1;
@@ -107,11 +143,14 @@ public class AssemblerMenu extends AbstractContainerMenu {
             @Override
             public boolean mayPlace(ItemStack stack) {
                 return stack.is(ModTags.Items.SAUCES);
+            }
+            public Identifier getNoItemIcon() {
+                return Identifier.fromNamespaceAndPath(Erstemod.MOD_ID,"container/slot/sauce");
             }
         });
 
         //sauce 2
-        addSlot(new Slot(inventory, 7, 152, 5) {
+        addSlot(new Slot(inventory, 7, 92, 65) {
             @Override
             public int getMaxStackSize() {
                 return 1;
@@ -120,16 +159,8 @@ public class AssemblerMenu extends AbstractContainerMenu {
             public boolean mayPlace(ItemStack stack) {
                 return stack.is(ModTags.Items.SAUCES);
             }
-        });
-        //top bun
-        addSlot(new Slot(inventory, 8, 80, 5) {
-            @Override
-            public int getMaxStackSize() {
-                return 1;
-            }
-            @Override
-            public boolean mayPlace(ItemStack stack) {
-                return stack.is(ModTags.Items.TOP_BUN);
+            public Identifier getNoItemIcon() {
+                return Identifier.fromNamespaceAndPath(Erstemod.MOD_ID,"container/slot/sauce");
             }
         });
     }
