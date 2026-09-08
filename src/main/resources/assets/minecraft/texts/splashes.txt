@@ -9,6 +9,5 @@ Did you know hamburgers don't contain ham?
 The seagull snatched one
 <PLAYERNAME> was slain by a Burger
 Why did the burger cross the road?
-<PLAYERNAME> was eaten by Burgur
-Cheese Burger + Cheese Burger = Double Cheese Burger
+<PLAYERNAME> was eaten by Burger
 Where is the lamb sauce
