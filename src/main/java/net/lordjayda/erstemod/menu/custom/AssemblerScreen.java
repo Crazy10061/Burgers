@@ -1,6 +1,7 @@
 package net.lordjayda.erstemod.menu.custom;
 
 import net.lordjayda.erstemod.Erstemod;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.RenderPipelines;
@@ -21,7 +22,6 @@ public class AssemblerScreen extends AbstractContainerScreen<AssemblerMenu> {
         super.extractBackground(graphics, mouseX, mouseY, a);
         int x = (width - imageWidth) / 2;
         int y = (height - imageHeight) / 2;
-
         graphics.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, x, y, 0, 0,
                 imageWidth, imageHeight, 256, 256);
     }
