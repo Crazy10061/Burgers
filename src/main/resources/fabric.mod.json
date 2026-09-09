@@ -7,6 +7,11 @@
 	"authors": [
 		"Lordjayda"
 	],
+	"contributors": [
+		"John Seagull",
+		"Crazy10061",
+		"jacobnxy"
+	],
 	"contact": {
 		"sources": "https://github.com/Lordjayda/Burgers"
 	},
