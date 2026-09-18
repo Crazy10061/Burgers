@@ -1,31 +1,61 @@
 package net.lordjayda.erstemod.menu.custom;
 
 import net.lordjayda.erstemod.Erstemod;
+import net.lordjayda.erstemod.crafting.ModRecipeType;
 import net.lordjayda.erstemod.menu.ModMenuTypes;
+import net.lordjayda.erstemod.recipe.BurgeringRecipe;
+import net.lordjayda.erstemod.recipe.BurgeringRecipeInput;
 import net.lordjayda.erstemod.tags.ModTags;
-import net.minecraft.client.renderer.entity.state.EndermanRenderState;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.Identifier;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
+
+import java.util.List;
+import java.util.Optional;
 
 public class AssemblerMenu extends AbstractContainerMenu {
     private final Container inventory;
-
+    private Player player;
+    @Override
+    public void slotsChanged(Container container) {
+        if (container == this.inventory && inventory instanceof BlockEntity blockEntity) {
+            Level lvl = blockEntity.getLevel();
+            if (lvl instanceof ServerLevel lvls) {
+                BurgeringRecipeInput input = new BurgeringRecipeInput(
+                        List.of(inventory.getItem(0), inventory.getItem(8)),
+                        List.of(inventory.getItem(6), inventory.getItem(7)),
+                        List.of(inventory.getItem(1), inventory.getItem(2), inventory.getItem(3), inventory.getItem(4), inventory.getItem(5))
+                );
+                RecipeManager ra = lvls.recipeAccess();
+                Optional<RecipeHolder<BurgeringRecipe>> match =
+                        ra.getRecipeFor(ModRecipeType.BURGERING, input, lvls);
+                Erstemod.LOGGER.debug(String.valueOf(match.isPresent()));
+                if (match.isPresent()) {
+                    inventory.setItem(9, match.get().value().assemble(input));
+                } else {
+                    inventory.setItem(9, ItemStack.EMPTY);
+                }
+            }
+        }
+    }
     public AssemblerMenu(int containerId, Inventory inv, BlockPos blockPos) {
         this(containerId, inv, inv.player.level().getBlockEntity(blockPos));
     }
 
+
     public AssemblerMenu(int containerId, Inventory inv, BlockEntity blockEntity) {
         super(ModMenuTypes.ASSEMBLER_MENU, containerId);
         this.inventory = ((Container) blockEntity);
-
+        this.player = inv.player;
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
@@ -39,8 +69,14 @@ public class AssemblerMenu extends AbstractContainerMenu {
             public boolean mayPlace(ItemStack stack) {
                 return stack.is(ModTags.Items.BOTTOM_BUN);
             }
+            @Override
             public Identifier getNoItemIcon() {
                 return Identifier.fromNamespaceAndPath(Erstemod.MOD_ID,"container/slot/bun_bottom");
+            }
+            @Override
+            public void setChanged() {
+                slotsChanged(this.container);
+                this.container.setChanged();
             }
         });
 
@@ -57,6 +93,11 @@ public class AssemblerMenu extends AbstractContainerMenu {
             public Identifier getNoItemIcon() {
                 return Identifier.fromNamespaceAndPath(Erstemod.MOD_ID,"container/slot/bun_top");
             }
+            @Override
+            public void setChanged() {
+                slotsChanged(this.container);
+                this.container.setChanged();
+            }
         });
 
         //Ingredient Slot 1
@@ -71,6 +112,11 @@ public class AssemblerMenu extends AbstractContainerMenu {
             }
             public Identifier getNoItemIcon() {
                 return Identifier.fromNamespaceAndPath(Erstemod.MOD_ID,"container/slot/ingredient");
+            }
+            @Override
+            public void setChanged() {
+                slotsChanged(this.container);
+                this.container.setChanged();
             }
         });
 
@@ -87,6 +133,11 @@ public class AssemblerMenu extends AbstractContainerMenu {
             public Identifier getNoItemIcon() {
                 return Identifier.fromNamespaceAndPath(Erstemod.MOD_ID,"container/slot/ingredient");
             }
+            @Override
+            public void setChanged() {
+                slotsChanged(this.container);
+                this.container.setChanged();
+            }
         });
 
         //Ingredient Slot 3
@@ -101,6 +152,11 @@ public class AssemblerMenu extends AbstractContainerMenu {
             }
             public Identifier getNoItemIcon() {
                 return Identifier.fromNamespaceAndPath(Erstemod.MOD_ID,"container/slot/ingredient");
+            }
+            @Override
+            public void setChanged() {
+                slotsChanged(this.container);
+                this.container.setChanged();
             }
         });
 
@@ -117,6 +173,11 @@ public class AssemblerMenu extends AbstractContainerMenu {
             public Identifier getNoItemIcon() {
                 return Identifier.fromNamespaceAndPath(Erstemod.MOD_ID,"container/slot/ingredient");
             }
+            @Override
+            public void setChanged() {
+                slotsChanged(this.container);
+                this.container.setChanged();
+            }
         });
 
         //Ingredient Slot 5
@@ -131,6 +192,11 @@ public class AssemblerMenu extends AbstractContainerMenu {
             }
             public Identifier getNoItemIcon() {
                 return Identifier.fromNamespaceAndPath(Erstemod.MOD_ID,"container/slot/ingredient");
+            }
+            @Override
+            public void setChanged() {
+                slotsChanged(this.container);
+                this.container.setChanged();
             }
         });
 
@@ -147,6 +213,11 @@ public class AssemblerMenu extends AbstractContainerMenu {
             public Identifier getNoItemIcon() {
                 return Identifier.fromNamespaceAndPath(Erstemod.MOD_ID,"container/slot/sauce");
             }
+            @Override
+            public void setChanged() {
+                slotsChanged(this.container);
+                this.container.setChanged();
+            }
         });
 
         //sauce 2
@@ -162,12 +233,29 @@ public class AssemblerMenu extends AbstractContainerMenu {
             public Identifier getNoItemIcon() {
                 return Identifier.fromNamespaceAndPath(Erstemod.MOD_ID,"container/slot/sauce");
             }
+            @Override
+            public void setChanged() {
+                slotsChanged(this.container);
+                this.container.setChanged();
+            }
         });
         // Result Slot
-        addSlot(new Slot(inventory, 9, 80, 115) {
+        addSlot(new Slot(inventory, 9, 141, 36) {
             @Override
             public boolean mayPlace(ItemStack stack) {
                 return false;
+            }
+            @Override
+            public void onTake(Player player, ItemStack stack) {
+                for (int i = 0; i < 9; i++) {
+                    inventory.setItem(i, ItemStack.EMPTY);
+                }
+                super.onTake(player, stack);
+            }
+            @Override
+            public void setChanged() {
+                slotsChanged(this.container);
+                this.container.setChanged();
             }
         });
     }
