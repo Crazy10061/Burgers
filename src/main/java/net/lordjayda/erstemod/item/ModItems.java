@@ -31,6 +31,7 @@ public class ModItems {
     public static final Item BUN = registerItem( "bun", Item::new );
     public static final Item TOP_BUN = registerItem( "top_bun", Item::new );
     public static final Item BOTTOM_BUN = registerItem( "bottom_bun", Item::new );
+    public static final Item FRIES = registerItem( "fries", properties -> new Item(properties.food(ModFoods.fries)));
 
 
     public static List<CuttableItem> getCuttableItems() {
