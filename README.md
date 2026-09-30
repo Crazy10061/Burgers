@@ -1,3 +1,3 @@
 # Burgers
 
-add Burgers to your game.
+Adds Burgers to your game.
