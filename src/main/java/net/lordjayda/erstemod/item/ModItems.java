@@ -39,7 +39,8 @@ public class ModItems {
                     new CuttableItem(LETTUCEHEAD, new ItemStack(LETTUCE, 4)),
                     new CuttableItem(TOMATO, new ItemStack(TOMATO_SLICE, 4)),
                     new CuttableItem(Items.BEEF, new ItemStack(RAW_PATTY, 1)),
-                    new CuttableItem(BUN, List.of(new ItemStack(TOP_BUN, 1), new ItemStack(BOTTOM_BUN, 1)))
+                    new CuttableItem(BUN, List.of(new ItemStack(TOP_BUN, 1), new ItemStack(BOTTOM_BUN, 1))),
+                    new CuttableItem(Items.BAKED_POTATO, List.of(new ItemStack(FRIES, 1)))
         );
     }
 
